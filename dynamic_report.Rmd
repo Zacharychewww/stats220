@@ -1,0 +1,81 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+body {
+font-family: Arial;
+}
+h2 {
+color: #000
+}
+```
+
+## What's going on with this data?
+
+This project analyzes survey data to see how many ads people see in a day, what content is recommended to them on youtube, what types of posts they interact with most, and how these variables all interact with one another
+
+```{r}
+library("tidyverse")
+library("magick")
+#data from google forms
+logged_data <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRBjmMS7Ly3pxR9bQzqaYR5GFrZcPLBx9qzRlvoQDu3D-n4KjfHad4t_DWxZl3ekyjSkftm1u732XrK/pub?output=csv")
+
+#renaming data 
+latest_data <- logged_data %>%
+  rename(
+    ads_seen = 3,
+    youtube_content = 4,
+    interaction_type = 5
+  )
+
+#summary vals
+mean_ads <- mean(latest_data$ads_seen, na.rm = TRUE)
+
+min_ads <- min(latest_data$ads_seen, na.rm = TRUE)
+max_ads <- max(latest_data$ads_seen, na.rm = TRUE)
+
+num_responses <- nrow(latest_data)
+
+#Graphs 1 & 2
+#1 Youtube Rec.
+ggplot(latest_data, aes(x = youtube_content)) +
+  geom_bar(fill = "cyan") +
+  labs(
+    title = "YouTube Reccommended Content",
+    x = "Content Type",
+    y = "No. of Responses"
+  ) +
+  theme_minimal()
+
+#2 UI types
+ggplot(latest_data, aes(x = interaction_type)) +
+  geom_bar(fill = "orange") +
+  labs(
+    title = "Most Common User Interaction Types",
+    x = "Type of interaction",
+    y = "No. of Responses "
+  ) +
+  theme_minimal() +
+  #overlapping x axis text if not tilted
+  theme(axis.text.x = element_text(angle = 35, hjust = 1))
+
+summary(latest_data)
+
+```
+
+**Insights from the data:**
+
+On average, responders reported seeing **`r round(mean_ads, 1)`** ads in the past 24 hours.
+
+The highest number of ads seen by a single responder was **`r max_ads`** ads, showing some users either have very high exposure or were online for a very long time.
+
+On the contrary, the lowest number of ads recorded was **`r min_ads`**, which shows just how varied the ad exposure can be between individuals
+
+A total of **`r num_responses`** responses were collected for the analysis, providing a reasonable sample to infer general trends for user behaviour
