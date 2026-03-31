@@ -71,7 +71,7 @@ summary(latest_data)
 
 ```
 
-## **Insights from the data:**
+## Insights from the data:
 
 On average, responders reported seeing **`r round(mean_ads, 1)`** ads in the past 24 hours.
 
