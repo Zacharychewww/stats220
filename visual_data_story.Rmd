@@ -79,7 +79,7 @@ Across all YouTube content types, the vast majority of respondents reported acti
 
 ## How did ad exposure change over time?
 
-![A scatter plot showing ads seen in 24 hours plotted against the date the form was completed. Two April observations appear at the far left, and a cluster of May observations appears at the far right, with a smoothed trend curve connecting them.](plot4.png)
+![A scatter plot showing ads seen in 24 hours plotted against the date the form was completed. Two April observations appear at the far left with high variation, and a cluster of May observations appears at the far right at lower values.](plot4.png)
 
 (the data was logged on paper and later transferred to the Google forms sheet, though i admittedly forgot to record the time stamps to Google's level of detail, and i kept on breaking it so i let it be, sorry D:)
 
