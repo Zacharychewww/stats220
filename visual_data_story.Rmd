@@ -1,0 +1,91 @@
+---
+title: "Ads, Algorithms, and actions. How digital platforms shape our online behaviour"
+output: html_document
+---
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+```
+
+```{js}
+$(function() {
+  $(".level2").css('visibility', 'hidden');
+  $(".level2").first().css('visibility', 'visible');
+  $(".container-fluid").height($(".container-fluid").height() + 300);
+  $(window).on('scroll', function() {
+    $('h2').each(function() {
+      var h2Top = $(this).offset().top - $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (h2Top >= 0 && h2Top <= windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'visible');
+      } else if (h2Top > windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'hidden');
+      }
+    });
+  });
+})
+```
+
+```{css, echo=FALSE}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f4f8;
+  color: #0d3b66;
+}
+
+h1, h2 {
+  color: #0d3b66;
+  border-bottom: 2px solid #2ec4b6;
+  padding-bottom: 6px;
+}
+
+p {
+  color: #1a6b8a;
+  line-height: 1.7;
+}
+
+.figcaption {display: none}
+```
+
+## What's going on with this data?
+This visual data story explores how people interact with digital platforms, specifically looking at the number of ads they see, what content Youtube recommends to them, what types of posts they engage with, and which platform they spend the most time on.
+
+Data was collected through an observational Google Form over (ahem) several weeks, where participants logged their own digital behaviour across platforms like YouTube, Instagram, TikTok, and X. A total of 44 responses were collected, with 21 of those also recording which platform they used most. No personally identifiable information was collected.
+
+The 3 key questions being explored are:
+- Does the platform you use most affect how many ads you see?
+- Does the type of YouTube content you watch relate to how many ads you see?
+- Does what you watch on YouTube change how you engage with posts online?
+
+## Which platform exposes users to the most ads? 
+
+![A horizontal bar chart showing mean ads seen in 24 hours for each platform. X and Youtube users report the highest average ad exposure, while TikTok users report the lowest.](plot1.png)
+Across all four platforms the average ad exposure is surprisingly similar, ranging from 40.3 to 46.5 ads in a 24-hour period. X users reported seeing the most ads on average, while TikTok users reported the fewest. However, the differences are small, suggesting that regardless of which platform someone uses most, heavy ad exposure is simply a consistent feature of modern digital life.
+
+This may simply just be a case of content density, with platforms like X and instagram, which were higher on the chart, having more content (and thus ads) be able to be shown in a shorter period unlike youtube and tiktok, where users may watch videos before scrolling/seeing an ad
+
+## Do certain YouTube content types come with more ads?
+
+![A boxplot with jittered points showing the spread of ads seen in 24 hours for each YouTube content type. News and Gaming viewers show wider spreads with higher outliers, while Education viewers tend to cluster lower.](plot2.png)
+While platform choice made little difference to the amount of ads seen, the type of YouTube content watched shows more interesting variation. Educational video viewers consistently reported the lowest ad counts with the tightest spread, suggesting shorter or more focused viewing sessions. Gaming video viewers had the widest distribution by far, including the highest recorded value of 167 ads, which indicates that some heavy gaming content viewers are spending significantly more time online overall, or leaving it on in the background. News and Music viewers sit in the middle, with moderate but variable exposure.
+
+
+## Does your YouTube content affect how you engage with posts?
+
+![A 100 percent stacked bar chart showing the proportion of active versus passive post interactions for each YouTube content type. Active engagement dominates across all content types, with passive engagement making up only a small proportion for each.](plot3.png)
+Across all YouTube content types, the vast majority of respondents reported actively engaging with posts, liking, commenting, sharing, or interacting with content from friends, family, or creators. Passive behaviour such as seeing a sponsored ad without interacting or having no interaction at all made up only a small slice for each content type. Education viewers showed slightly more passive behaviour than the others, while Gaming, Entertainment, Music, and News viewers all showed similarly high rates of active engagement.
+
+## How did ad exposure change over time?
+
+![A scatter plot showing ads seen in 24 hours plotted against the date the form was completed. Two April observations appear at the far left, and a cluster of May observations appears at the far right, with a smoothed trend curve connecting them.](plot4.png)
+
+(the data was logged on paper and later transferred to the Google forms sheet, though i admittedly forgot to record the time stamps to Google's level of detail, and i kept on breaking it so i let it be, sorry D:)
+
+The timestamped observations span two data collection periods, early April and mid May (project 2's data was recorded early april, while project 4's was recorded around the past 2 weeks (1st - 13th may)). The April (project 2) entries show considerable variation, with one respondent reporting 166 ads and another just 5, suggesting very different levels of online activity on those days, perhaps due to studying for exams and the holiday periods. The May batch, collected over a shorter window, clusters more tightly and at lower values, with most respondents reporting between 13 and 98 ads (this was over the may 1st - 13th period, and the lower ads seen may be due to exams happening). The gap between the two collection periods is a natural limitation of the data, but the contrast between the two sessions is itself an interesting finding. (whoops)
+
+## what does it all mean?
+Across all four visualizations, a consistent picture emerges: heavy ad exposure is a universal feature of digital platform use regardless of which platform people prefer. What does vary is the intensity; Gaming content viewers and X users tend towards higher exposure, while Education viewers and TikTok users sit at the lower end. Meanwhile, engagement behavior is overwhelmingly active across the board, suggesting that people are not just passive consumers of online content, they are participating, reacting, and interacting regardless of what they watch.
+
+These findings have real implications for advertisers, content creators, and everyday users alike. The data was collected and analysed as part of a project for STATS 220 at the University of Auckland, Semester One 2026.
